@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Single post</title>
+
+<!-- font Awesome CDN link -->
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+/>
+
+<!-- External CSS -->
+<link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="about.css" />
+<link rel="stylesheet" href="buteel.css" />
+<link rel="stylesheet" href="post.css" />
+
+<!-- JQuery CDN link -->
+<script
+src="https://code.jquery.com/jquery-3.6.0.min.js"
+integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+crossorigin="anonymous"
+></script>
+</head>
+<body>
+<!-- Navigation start -->
+<nav>
+<img src="img/favicon.ico" class="logo" alt="" />
+
+<div class="navigation">
+<ul>
+<i id="menu-close" class="fas fa-times"></i>
+<li><a href="index.html">Нүүр хуудас</a></li>
+<li><a href="buteel.html">Бүтээлийн танилцуулга</a></li>
+<li><a href="course-inner.html" class="active">Бидний үзсэн хичээл</a></li>
+<li><a href="contact.html">Холбоо барих</a></li>
+</ul>
+
+<img src="img/menu.png" id="menu-btn" alt="" />
+</div>
+</nav>
+<!-- Navigation ends -->
+
+<!-- Post body starts from here -->
+<div id="blog-container">
+<div class="blogs blogpost">
+<div class="post">
+<img src="img/b1.jpg" alt="" />
+<h3> Arduino</h3>
+<p>#include Servo.h
+    #include DHT.h
+    
+    // --- Motor Driver Pins ---
+    const int IN1 = 8;
+    const int IN2 = 9;
+    const int IN3 = 6;
+    const int IN4 = 7;
+    const int ENA = 10;
+    const int ENB = 5;
+    
+    // --- Servo Pins ---
+    const int headServoPin = 11;
+    const int radar1ServoPin = 13;
+    const int radar2ServoPin = 14;
+    const int tempServoPin = 16;
+    const int pirServoPin = 15;
+    const int extraServoPin = 53;
+    const int headServo2Pin = 52;
+    const int headServo3Pin = 51;
+    const int servo6Pin = 23;
+    const int servo7Pin = 20;
+    const int servo8Pin = 21;
+    const int servo9Pin = 22;
+    const int servo10Pin = 24;
+    const int servo11Pin = 25;
+    const int servo12Pin = 26;
+    
+    // --- Radar Sensor Pins ---
+    const int trigPin = 4;
+    const int echoPin = A0;
+    
+    // --- PIR Sensor Pin ---
+    const int pirPin = A2;  // PIR sensor input
+    
+    // --- Stepper Motor Pins ---
+    #define STEPPER_PIN_1 34
+    #define STEPPER_PIN_2 35
+    #define STEPPER_PIN_3 36
+    #define STEPPER_PIN_4 37
+    int step_number = 0;
+    
+    // --- Servo Objects ---
+    Servo headServo, radarServo1, radarServo2, tempServo, pirServo;
+    Servo extraServo, headServo2, headServo3;
+    Servo servo6, servo7, servo8, servo9;
+    Servo servo10, servo11, servo12;
+    
+    // --- DHT Sensor Setup ---
+    #define DHTPIN A1
+    #define DHTTYPE DHT11
+    DHT dht(DHTPIN, DHTTYPE);
+    
+    // --- Flags for Continuous Sensor Checking ---
+    bool motionDetectionActive = false;
+    bool radarDetectionActive = false;
+    bool temperatureDetectionActive = false;
+    
+    void setup() {
+      Serial.begin(9600);
+      Serial1.begin(9600);  // Bluetooth communication
+    
+      // Attach servos
+      headServo.attach(headServoPin);
+      radarServo1.attach(radar1ServoPin);
+      radarServo2.attach(radar2ServoPin);
+      tempServo.attach(tempServoPin);
+      pirServo.attach(pirServoPin);
+      extraServo.attach(extraServoPin);
+      headServo2.attach(headServo2Pin);
+      headServo3.attach(headServo3Pin);
+      servo6.attach(servo6Pin);
+      servo7.attach(servo7Pin);
+      servo8.attach(servo8Pin);
+      servo9.attach(servo9Pin);
+      servo10.attach(servo10Pin);
+      servo11.attach(servo11Pin);
+      servo12.attach(servo12Pin);
+    
+      // Set motor pins as output
+      pinMode(IN1, OUTPUT);
+      pinMode(IN2, OUTPUT);
+      pinMode(IN3, OUTPUT);
+      pinMode(IN4, OUTPUT);
+      pinMode(ENA, OUTPUT);
+      pinMode(ENB, OUTPUT);
+    
+      // Stepper motor pins
+      pinMode(STEPPER_PIN_1, OUTPUT);
+      pinMode(STEPPER_PIN_2, OUTPUT);
+      pinMode(STEPPER_PIN_3, OUTPUT);
+      pinMode(STEPPER_PIN_4, OUTPUT);
+    
+      // Radar sensor pins
+      pinMode(trigPin, OUTPUT);
+      pinMode(echoPin, INPUT);
+    
+      // PIR sensor pin
+      pinMode(pirPin, INPUT);
+    
+      // Initialize DHT sensor
+      dht.begin();
+    
+      stopMotors();
+      stopServo();
+      stopStepper();
+    
+      Serial.println("System Ready");
+    }
+    
+    void loop() {
+      if (Serial1.available()) {
+        char command = Serial1.read();
+        Serial.print("Received: ");
+        Serial.println(command);
+    
+        switch (command) {
+          case 'q': for (int i = 0; i < 100; i++) { OneStep(false); delay(10); } break;
+          case 'p': for (int i = 0; i < 100; i++) { OneStep(true); delay(10); } break;
+          case 't': stopStepper(); break;
+          case 'f': moveForward(200); break;
+          case 'b': moveBackward(200); break;
+          case 's': stopMotors(); stopServo(); break;
+    
+          case 'R': radarDetectionActive = true; break;
+          case 'T': temperatureDetectionActive = true; break;
+          case 'P': motionDetectionActive = true; break;
+    
+          case 'Q': headServo.write(180); break;
+          case 'C': radarServo2.write(0); break;
+          case 'O': radarServo2.write(90); break;
+          case 'Z': tempServo.write(90); break;
+          case 'Y': tempServo.write(0); break;
+          case 'B': pirServo.write(0); break;
+          case 'A': pirServo.write(90); break;
+          case 'e': extraServo.write(90); break;
+          case 'E': extraServo.write(0); break;
+          case 'H': headServo2.write(0); break;
+          case 'h': headServo2.write(90); break;
+          case 'J': headServo3.write(0); break;
+          case 'j': headServo3.write(90); break;
+          case '6': servo6.write(0); break;
+          case 'u': servo6.write(90); break;
+          case '7': servo7.write(180); break;
+          case 'i': servo7.write(90); break;
+          case '8': servo8.write(0); break;
+          case 'v': servo8.write(90); break;
+          case '9': servo9.write(0); break;
+          case 'x': servo9.write(90); break;
+    
+          // New servos
+          case 'm': servo10.write(0); break;
+          case 'n': servo10.write(90); break;
+          case 'k': servo11.write(0); break;
+          case 'l': servo11.write(90); break;
+          case 'g': servo12.write(0); break;
+          case '0': servo12.write(90); break;
+    
+          default:
+            stopMotors();
+            stopServo();
+            Serial.println("Unknown command");
+            break;
+        }
+      }
+    
+      if (motionDetectionActive) checkMotionContinuously();
+      if (radarDetectionActive) scanRadarContinuously();
+      if (temperatureDetectionActive) checkTemperatureContinuously();
+    }
+    
+    // --- Motor Functions ---
+    void stopMotors() {
+      digitalWrite(IN1, LOW);
+      digitalWrite(IN2, LOW);
+      digitalWrite(IN3, LOW);
+      digitalWrite(IN4, LOW);
+    }
+    
+    void moveForward(int duration) {
+      digitalWrite(IN1, HIGH);
+      digitalWrite(IN2, LOW);
+      digitalWrite(IN3, HIGH);
+      digitalWrite(IN4, LOW);
+      delay(duration);
+    }
+    
+    void moveBackward(int duration) {
+      digitalWrite(IN1, LOW);
+      digitalWrite(IN2, HIGH);
+      digitalWrite(IN3, LOW);
+      digitalWrite(IN4, HIGH);
+      delay(duration);
+    }
+    
+    // --- Stepper Functions ---
+    void stopStepper() {
+      digitalWrite(STEPPER_PIN_1, LOW);
+      digitalWrite(STEPPER_PIN_2, LOW);
+      digitalWrite(STEPPER_PIN_3, LOW);
+      digitalWrite(STEPPER_PIN_4, LOW);
+    }
+    
+    void OneStep(bool dir) {
+      if (dir) {
+        switch (step_number) {
+          case 0: digitalWrite(STEPPER_PIN_1, HIGH); digitalWrite(STEPPER_PIN_2, LOW); digitalWrite(STEPPER_PIN_3, LOW); digitalWrite(STEPPER_PIN_4, LOW); break;
+          case 1: digitalWrite(STEPPER_PIN_1, LOW); digitalWrite(STEPPER_PIN_2, HIGH); digitalWrite(STEPPER_PIN_3, LOW); digitalWrite(STEPPER_PIN_4, LOW); break;
+          case 2: digitalWrite(STEPPER_PIN_1, LOW); digitalWrite(STEPPER_PIN_2, LOW); digitalWrite(STEPPER_PIN_3, HIGH); digitalWrite(STEPPER_PIN_4, LOW); break;
+          case 3: digitalWrite(STEPPER_PIN_1, LOW); digitalWrite(STEPPER_PIN_2, LOW); digitalWrite(STEPPER_PIN_3, LOW); digitalWrite(STEPPER_PIN_4, HIGH); break;
+        }
+      } else {
+        switch (step_number) {
+          case 0: digitalWrite(STEPPER_PIN_1, LOW); digitalWrite(STEPPER_PIN_2, LOW); digitalWrite(STEPPER_PIN_3, LOW); digitalWrite(STEPPER_PIN_4, HIGH); break;
+          case 1: digitalWrite(STEPPER_PIN_1, LOW); digitalWrite(STEPPER_PIN_2, LOW); digitalWrite(STEPPER_PIN_3, HIGH); digitalWrite(STEPPER_PIN_4, LOW); break;
+          case 2: digitalWrite(STEPPER_PIN_1, LOW); digitalWrite(STEPPER_PIN_2, HIGH); digitalWrite(STEPPER_PIN_3, LOW); digitalWrite(STEPPER_PIN_4, LOW); break;
+          case 3: digitalWrite(STEPPER_PIN_1, HIGH); digitalWrite(STEPPER_PIN_2, LOW); digitalWrite(STEPPER_PIN_3, LOW); digitalWrite(STEPPER_PIN_4, LOW); break;
+        }
+      }
+      step_number++;
+      if (step_number > 3) step_number = 0;
+    }
+    
+    // --- Reset Servos to Neutral ---
+    void stopServo() {
+      headServo.write(90);
+      radarServo1.write(90);
+      radarServo2.write(0);
+      tempServo.write(90);
+      pirServo.write(0);
+      extraServo.write(90);
+      headServo2.write(90);
+      headServo3.write(90);
+      servo6.write(90);
+      servo7.write(90);
+      servo8.write(90);
+      servo9.write(90);
+      servo10.write(90);
+      servo11.write(90);
+      servo12.write(90);
+    }
+    
+    // --- Radar Scan ---
+    void scanRadarContinuously() {
+      int distances[4];
+      String directions[4] = {"0°", "90°", "180°", "270°"};
+    
+      radarServo1.write(0); delay(1000); distances[0] = getUltrasonicDistance();
+      radarServo1.write(90); delay(1000); distances[1] = getUltrasonicDistance();
+      radarServo1.write(180); delay(1000); distances[2] = getUltrasonicDistance();
+      radarServo1.write(270); delay(1000); distances[3] = getUltrasonicDistance();
+    
+      int maxDistance = distances[0];
+      String farthestDirection = directions[0];
+      for (int i = 1; i < 4; i++) {
+        if (distances[i] > maxDistance) {
+          maxDistance = distances[i];
+          farthestDirection = directions[i];
+        }
+      }
+    
+      Serial.print("Farthest direction: ");
+      Serial.print(farthestDirection);
+      Serial.print(" with distance: ");
+      Serial.println(maxDistance);
+    
+      if (motionDetectionActive || temperatureDetectionActive) radarDetectionActive = false;
+    }
+    
+    // --- PIR Motion Detection ---
+    void checkMotionContinuously() {
+      int pirState = digitalRead(pirPin);
+      Serial.println(pirState == HIGH ? "Motion Detected!" : "No Motion Detected");
+    
+      if (radarDetectionActive || temperatureDetectionActive) motionDetectionActive = false;
+    }
+    
+    // --- Temperature Reading ---
+    void checkTemperatureContinuously() {
+      float temp = dht.readTemperature();
+      Serial.print("Temperature: ");
+      Serial.println(temp);
+    
+      if (radarDetectionActive || motionDetectionActive) temperatureDetectionActive = false;
+    }
+    
+    // --- Ultrasonic Distance Measurement ---
+    int getUltrasonicDistance() {
+      digitalWrite(trigPin, LOW);
+      delayMicroseconds(2);
+      digitalWrite(trigPin, HIGH);
+      delayMicroseconds(10);
+      digitalWrite(trigPin, LOW);
+      long duration = pulseIn(echoPin, HIGH);
+      return duration * 0.034 / 2;
+    }
+</p>
+
+<br />
+
+<a href="#">Үрэгжилүүлж унших</a>
+</div>
+</div>
+</div>
+ 
+<script>
+// Show menu links on burger click
+$("#menu-btn").click(function () {
+$("nav .navigation ul").addClass("active");
+});
+
+// Hide navbar on click function
+$("#menu-close").click(function () {
+$("nav .navigation ul").removeClass("active");
+});
+</script>
+</body>
+</html>

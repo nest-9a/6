@@ -1,3 +1,5 @@
+
+
 #course-inner
 {
 	display: flex;
@@ -30,13 +32,22 @@
 }
 
 
-#course-inner .overview .course-img
+#course-inner .overview 
 {
-	width: 100%;
+	width: 1000px;
 	height: 60vh;
 	object-fit: cover;
 	border-radius: 12px;
 	margin-bottom: 20px;
+}
+.course-img{
+	width: 1000px;
+	height: 60vh;
+}
+.course iframe
+{
+	width: 100%;
+	height: 100%;
 }
 
 #course-inner .overview .course-head
@@ -159,6 +170,22 @@
 }
 
 
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  margin-bottom: 20px;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+}
 
 @media screen and (max-width: 769px)
 {
@@ -190,8 +217,6 @@
 		margin-top: 25px;
 	}
 }
-
-
 
 
 

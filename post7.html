@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Single post</title>
+
+<!-- font Awesome CDN link -->
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+/>
+
+<!-- External CSS -->
+<link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="about.css" />
+<link rel="stylesheet" href="buteel.css" />
+<link rel="stylesheet" href="post.css" />
+
+<!-- JQuery CDN link -->
+<script
+src="https://code.jquery.com/jquery-3.6.0.min.js"
+integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+crossorigin="anonymous"
+></script>
+</head>
+<body>
+<!-- Navigation start -->
+<nav>
+<img src="img/favicon.ico" class="logo" alt="" />
+
+<div class="navigation">
+<ul>
+<i id="menu-close" class="fas fa-times"></i>
+<li><a href="index.html">Нүүр хуудас</a></li>
+<li><a href="buteel.html">Бүтээлийн танилцуулга</a></li>
+<li><a href="course-inner.html" class="active">Бидний үзсэн хичээл</a></li>
+<li><a href="contact.html">Холбоо барих</a></li>
+</ul>
+
+<img src="img/menu.png" id="menu-btn" alt="" />
+</div>
+</nav>
+<!-- Navigation ends -->
+
+<!-- Post body starts from here -->
+<div id="blog-container">
+<div class="blogs blogpost">
+<div class="post">
+<img src="img/b1.jpg" alt="" />
+<h3>Ашигласан технологууд</h3>
+<p>Arduino Mega
+    Бид системийн үндсэн удирдлагын самбар болгон сонгосон. Энэ нь олон пинтэй, олон төрлийн мотор, мэдрэгчүүдийг нэгэн зэрэг ажиллуулахад тохиромжтой байсан.
+    DC Motor , l298n
+    2 ширхэг DC мотор-ыг l298n motor driver-аар удирдаж, роботоо чиглүүлэн хөдөлгөх боломжтой болсон.
+    360 Servo Motor
+    Мөн 3 ширхэг 360 градус эргэлттэй servo мотор ашигласан билээ. Эдгээрийг Arduino-гийн 24-26 дугаартай пинүүд дээр холбоод, GND, 5V-д холбосон.
+    180 Servo Motor
+    Үүний зэрэгцээ 10 ширхэг 180 градус servo мотор-ыг бусад хөдөлгөөнт эд ангиудад хуваарилан ашигласан. Эдгээрийг 14-17, 20-23, 51-53 пинүүд дээр холбож, мөн GND, 5V-т тэжээл өгсөн. 
+    Breadboard
+    Бүх эд ангиудыг хооронд нь холбохын тулд ашигласан ба 5V, GND холболтуудыг ашигласан.
+    LED
+    5 ширхэг LED-ийг янз бүрийн дохио, эффектийн зориулалтаар ашигласан. ЭДгээрийг 45-59 пин дээр резистор ашиглан холбож, GND-д буцааж залгасан.
+    LED Strip
+    Илүү их гэрэл, эффект өгөхийн тулд бид LED Strip ашигласан бөгөөд энэ нь 50-р пин, 5V, GND дээр холбогдсон.
+    LCD
+    Мэдээлэл харагдуулах зорилгоор LCD дэлгэц болон 8x8 MAX7219 matrix module ашигласан. LCD нь SDA, SCL, 5V, GND дээр холбогдож, текст мэдээлэл гаргана.
+    Speaker
+    Үүнийг ашиглан дуу авиа гаргах функц нэмж, “Star Wars” киноны эффектийг илүү амьд болгохыг зорьсон.
+    DHT Sensor
+    Орчны температур болон чийг хэмжихэд ашигласан.
+    Ultrasonic Sensor
+    Саадыг илрүүлж роботыг автоматаар зогсоох чадвартай бөгөөд Echo - A0, Trig - A1, мөн 5V, GND-д холбогдсон.
+    PIR Sensor
+    Хөдөлгөөн мэдрэхэд зориулагдсан бөгөөд 5V, GND холболттой.
+    
+</p>
+
+<br />
+
+</div>
+</div>
+</div>
+ 
+<script>
+// Show menu links on burger click
+$("#menu-btn").click(function () {
+$("nav .navigation ul").addClass("active");
+});
+
+// Hide navbar on click function
+$("#menu-close").click(function () {
+$("nav .navigation ul").removeClass("active");
+});
+</script>
+</body>
+</html>

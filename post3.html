@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Single post</title>
+
+<!-- font Awesome CDN link -->
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+/>
+
+<!-- External CSS -->
+<link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="about.css" />
+<link rel="stylesheet" href="buteel.css" />
+<link rel="stylesheet" href="post.css" />
+
+<!-- JQuery CDN link -->
+<script
+src="https://code.jquery.com/jquery-3.6.0.min.js"
+integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+crossorigin="anonymous"
+></script>
+</head>
+<body>
+<!-- Navigation start -->
+<nav>
+<img src="img/favicon.ico" class="logo" alt="" />
+
+<div class="navigation">
+<ul>
+<i id="menu-close" class="fas fa-times"></i>
+<li><a href="index.html">Нүүр хуудас</a></li>
+<li><a href="buteel.html">Бүтээлийн танилцуулга</a></li>
+<li><a href="course-inner.html" class="active">Бидний үзсэн хичээл</a></li>
+<li><a href="contact.html">Холбоо барих</a></li>
+</ul>
+
+<img src="img/menu.png" id="menu-btn" alt="" />
+</div>
+</nav>
+<!-- Navigation ends -->
+
+<!-- Post body starts from here -->
+<div id="blog-container">
+<div class="blogs blogpost">
+<div class="post">
+<img src="img/vader.jpeg alt="" />
+<h3>Darth Vader</h3>
+<p>Дарт Вейдер (Darth Vader) бол Оддын дайн (Star Wars) цувралын хамгийн алдартай, танигдсан дүрүүдийн нэг бөгөөд кино түүхэн дэх хамгийн нөлөө бүхий эсрэг баатар (антагонист) гэж тооцогддог
+</p>
+
+<p>Дарт Вейдер гэж хэн бэ?<br>
+    Жинхэнэ нэр: Анакин Скайуокер (Anakin Skywalker)
+    <br>
+    Цол/Нэр: Дарт Вейдер (Сит лорд болохдоо авсан нэр)
+    <br>
+    Гарсан эх сурвалж: Star Wars: Episode IV – A New Hope (1977)
+    <br>
+    Гариг: Татуин (Tatooine)
+    <br>
+    Багш нар: Обиван Кеноби (Жедай), Дарт Сидиус/Палпатин (Сит)
+</p>
+
+<p>Гарсан гол кинонууд
+    <br>
+
+    Episode I–III (Анакины хүүхэд нас, Жедай болох)
+    <br>
+    Episode IV–VI (Дарт Вейдерийн харанхуйн түүх, сүүлчийн аврал)
+    <br>
+    Rogue One, Obi-Wan Kenobi (цуврал), Star Wars Rebels (анимейшн) зэрэгт мөн гардаг.
+</p>
+
+<br />
+
+<a href="#">Үрэгжилүүлж унших</a>
+</div>
+</div>
+</div>
+ 
+<script>
+// Show menu links on burger click
+$("#menu-btn").click(function () {
+$("nav .navigation ul").addClass("active");
+});
+
+// Hide navbar on click function
+$("#menu-close").click(function () {
+$("nav .navigation ul").removeClass("active");
+});
+</script>
+</body>
+</html>

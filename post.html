@@ -1,94 +1,144 @@
 <!DOCTYPE html>
-<html lang="mn">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Бүтээлийн дэлгэрэнгүй</title>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Single post</title>
 
-    <!-- Font Awesome CDN холбоос -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-    />
+<!-- font Awesome CDN link -->
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+/>
 
-    <!-- Гадны CSS -->
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="about.css" />
-    <link rel="stylesheet" href="blog.css" />
+<!-- External CSS -->
+<link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="buteel.css" />
+<link rel="stylesheet" href="contact.css" />
+<link rel="stylesheet" href="post.css" />
 
-    <!-- JQuery CDN холбоос -->
-    <script
-      src="https://code.jquery.com/jquery-3.6.0.min.js"
-      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-      crossorigin="anonymous"
-    ></script>
-  </head>
-  <body>
-    
-    <nav>
-      <img src="img/logo.svg" class="logo" alt="" />
+<!-- JQuery CDN link -->
+<script
+src="https://code.jquery.com/jquery-3.6.0.min.js"
+integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+crossorigin="anonymous"
+></script>
+</head>
+<body>
+<!-- Navigation start -->
+<nav>
+<img src="img/favicon.ico" class="logo" alt="" />
 
-      <div class="navigation">
-        <ul>
-          <i id="menu-close" class="fas fa-times"></i>
-				<li><a href="index.html" class="active">Нүүр Хуудас</a></li>
-				<li><a href="buteel.html">Бүтээлийн танилцуулга</a></li>
-				<li><a href="course-inner.html" class="active">Хичээлийн тухай</a></li>
-				<li><a href="contact.html">Холбоо барих</a></li>
-        </ul>
+<div class="navigation">
+<ul>
+<i id="menu-close" class="fas fa-times"></i>
+<li><a href="index.html">Нүүр хуудас</a></li>
+<li><a href="buteel.html">Бүтээлийн танилцуулга</a></li>
+<li><a href="course-inner.html" class="active">Бидний үзсэн хичээл</a></li>
+<li><a href="contact.html">Холбоо барих</a></li>
+</ul>
 
-        <img src="img/menu.png" id="menu-btn" alt="" />
+<img src="img/menu.png" id="menu-btn" alt="" />
+</div>
+</nav>
+<!-- Navigation ends -->
+
+<!-- Post body starts from here -->
+<div id="blog-container">
+<div class="blogs blogpost">
+<div class="post">
+<img src="img/r2d2.webp" alt="" />
+<h3>R2-D2</h3>
+<p>R2-D2 нь Оддын дайн (Star Wars) киноны цувралын хамгийн алдартай ба дуртай дэд дүрүүдийн нэг юм. Тэрээр "астромеханик дроид" (astromech droid) буюу сансрын хөлгийн засвар, удирдлага, мэдээллийн хадгалалт зэрэгт зориулсан робот юм.
+</p>
+
+<p>Кинонд гүйцэтгэсэн үүрэг:
+  R2-D2 нь анхны Star Wars кино буюу Episode IV: A New Hope (1977) кинонд анх гарч ирсэн.
+  
+  Тэрээр Принцесс Лея-гийн тусламж хүссэн мессежийг Обиван Кеноби-д хүргэж, адал явдлыг эхлүүлдэг.
+  
+  Түүнчлэн Энакин Скайуокер (Дарт Вейдэр), дараа нь Люк Скайуокер зэрэг олон эзэдтэй хамт аялж, тэдэнд олон удаа амь аврагч болж байсан.
+  
+  Ямар ч үед зоригтой, ухаалаг, үнэнч зан чанараараа олны хайр татсан.
+</p>
+
+<p>Гол онцлогууд: <br>
+  Үйлдвэрлэгч: Industrial Automaton компани
+  <br>
+  Загвар: R2 цувралын астромеханик дроид
+  <br>
+  Үүрэг:
+  <br>
+  Оддын хөлгийг засах
+  <br>
+  Навигацийн системд туслах
+  <br>
+  Хэрэгтэй мэдээлэл хадгалах, дамжуулах
+  <br>
+  Эзэндээ үнэнч, аюулд орсон үед хамгаалах
+</p>
+
+<br />
+
+<a href="#">Үрэгжилүүлж унших</a>
+</div>
+</div>
+</div>
+<footer>
+  <div class="footer-container">
+    <div class="footer-left">
+      <img src="https://nhs.edu.mn/favicon.ico" class="logo" alt="Nest Logo">
+      <div class="footer-social">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-dribbble"></i></a>
+        <a href="#"><i class="fas fa-code-branch"></i></a>
       </div>
-    </nav>
+      <p class="copyright">© 2024 | Nest Education IT School | V.2.1</p>
+    </div>
 
-    <section id="about-home">
-      <h2>Хичээлийн тухай.</h2>
-    </section>
-
-    <!-- Post body starts from here -->
-    <div id="blog-container">
-      <div class="blogs blogpost">
-        <div class="post">
-          <img src="img/b1.jpg" alt="" />
-          <h3>Вэб хөгжүүлэлтийг хамгийн хялбар аргаар сур</h3>
-          <p>
-            Тус компани өөрөө маш амжилттай компани. Учир нь энд, тэнд ялгах нь
-            ижил зүйлийг хийх оюун ухаан юм. Тэд саад тотгорыг хангах, нь!
-            Тиймээс хэн ч хамгийн зохистой хүмүүсийн үүрэг хариуцлага хүлээхийг
-            хүсдэггүй!
-          </p>
-
-          <p>
-            Тус компани өөрөө маш амжилттай компани. Учир нь энд, тэнд ялгах нь
-            ижил зүйлийг хийх оюун ухаан юм. Тэд саад тотгорыг хангах, нь!
-            Тиймээс хэн ч хамгийн зохистой хүмүүсийн үүрэг хариуцлага хүлээхийг
-            хүсдэггүй!
-          </p>
-
-          <p>
-            Тус компани өөрөө маш амжилттай компани. Учир нь энд, тэнд ялгах нь
-            ижил зүйлийг хийх оюун ухаан юм. Тэд саад тотгорыг хангах, нь!
-            Тиймээс хэн ч хамгийн зохистой хүмүүсийн үүрэг хариуцлага хүлээхийг
-            хүсдэггүй!
-          </p>
-
-          <br />
-
-          <a href="#">Үрэгжилүүлж унших</a>
+    <div class="footer-right">
+      <div class="footer-item">
+        <i class="fas fa-envelope"></i>
+        <a href="mailto:contact@nhs.edu.mn">contact@nhs.edu.mn</a>
+      </div>
+      <div class="footer-item">
+        <i class="fas fa-phone"></i>
+        <div>
+          <a href="tel:77995555">7799-5555</a><br>
+          <a href="tel:77994444">7799-4444</a>
+        </div>
+      </div>
+      <div class="footer-item">
+        <i class="fas fa-clock"></i>
+        <div>
+          Даваа - Баасан 10:00 - 16:00,<br>
+          Бямба - Ням: Амарна
+        </div>
+      </div>
+      <div class="footer-item">
+        <i class="fas fa-map-marker-alt"></i>
+        <div>
+          Нэст Эдүкэйшн сургуулийн байр<br>
+          Оюутны гудамж, 8-р хороо, Сүхбаатар дүүрэг,<br>
+          Улаанбаатар хот
         </div>
       </div>
     </div>
-    
-    <script>
-      // Show menu links on burger click
-      $("#menu-btn").click(function () {
-        $("nav .navigation ul").addClass("active");
-      });
+  </div>
+</footer>
+<script>
+// Show menu links on burger click
+$("#menu-btn").click(function () {
+$("nav .navigation ul").addClass("active");
+});
 
-      // Hide navbar on click function
-      $("#menu-close").click(function () {
-        $("nav .navigation ul").removeClass("active");
-      });
-    </script>
-  </body>
+// Hide navbar on click function
+$("#menu-close").click(function () {
+$("nav .navigation ul").removeClass("active");
+});
+</script>
+</body>
 </html>

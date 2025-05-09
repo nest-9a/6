@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Single post</title>
+
+<!-- font Awesome CDN link -->
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+/>
+
+<!-- External CSS -->
+<link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="about.css" />
+<link rel="stylesheet" href="buteel.css" />
+<link rel="stylesheet" href="post.css" />
+
+<!-- JQuery CDN link -->
+<script
+src="https://code.jquery.com/jquery-3.6.0.min.js"
+integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+crossorigin="anonymous"
+></script>
+</head>
+<body>
+<!-- Navigation start -->
+<nav>
+<img src="img/favicon.ico" class="logo" alt="" />
+
+<div class="navigation">
+<ul>
+<i id="menu-close" class="fas fa-times"></i>
+<li><a href="index.html">Нүүр хуудас</a></li>
+<li><a href="buteel.html">Бүтээлийн танилцуулга</a></li>
+<li><a href="course-inner.html" class="active">Бидний үзсэн хичээл</a></li>
+<li><a href="contact.html">Холбоо барих</a></li>
+</ul>
+
+<img src="img/menu.png" id="menu-btn" alt="" />
+</div>
+</nav>
+<!-- Navigation ends -->
+
+<!-- Post body starts from here -->
+<div id="blog-container">
+<div class="blogs blogpost">
+<div class="post">
+<img src="img/mandalorian.jpeg"" />
+<h3>Mandalorian</h3>
+<p>Мандалориан (Mandalorian) гэдэг нь Star Wars ертөнцөд маш гүн түүхтэй, дайчин соёл бүхий ард түмэн юм. Хамгийн сүүлд олон нийтэд танигдсан нь “The Mandalorian” нэртэй Disney+ цувралаар дамжуулан байлаа.
+
+
+</p>
+
+<p> Мандалориан гэж хэн бэ?
+    <br>
+    Мандалориан гэдэг нь тухайн хүний гарал угсаа биш, харин соёл, амьдралын хэв маяг, итгэл үнэмшил юм.
+    <br>
+    Мандалорууд бол дайчин, өөрсдийн хууль дүрмээр амьдардаг хүмүүс бөгөөд “This is the Way” (Энэ бол зам) гэх уриагаар танигддаг.
+</p>
+
+<p>The Mandalorian (цуврал) <br>
+    Эхний гарсан он: 2019
+    <br>
+    Дэлгэцийн гол дүр: Дин Жарин ба Грогу
+    <br>
+    Сэдэв: Хуучин Бүгд Найрамдах Улс унасан үеийн дараах амьдрал, Галактикийн зах хязгаар дахь адал явдал, үнэнч байдал ба сэтгэлийн өсөлт
+    <br>
+    Ололт: Star Wars ертөнцийн шинэ үеийг нээсэн, олон шүтэн бишрэгчийг татсан.
+</p>
+
+<br />
+
+<a href="#">Үрэгжилүүлж унших</a>
+</div>
+</div>
+</div>
+ 
+<script>
+// Show menu links on burger click
+$("#menu-btn").click(function () {
+$("nav .navigation ul").addClass("active");
+});
+
+// Hide navbar on click function
+$("#menu-close").click(function () {
+$("nav .navigation ul").removeClass("active");
+});
+</script>
+</body>
+</html>
